@@ -90,7 +90,7 @@ the date*/
     //group future day, month and year
     var ftdategp = ftdaynumber + '/' + ftmonth + '/' + ftyear;
     //TODO displays the result
-    document.getElementById("result").innerHTML = "A licença de " + y + " dia(s) a partir de " + initday + "," + initdategp + " terminará no dia " + ftdategp + "("+ftday+").";
+    document.getElementById("result").innerHTML = "A licença de " + y + " dia(s) a partir de " + initday + ", " + initdategp + ",<br/>\nterminará no dia " + ftdategp + " ("+ftday+").";
     //logs used during development
     /*console.log("Os dias selecionados para adição à data foram: "+ y);
     console.log("Foram adicionados "+ finalDateInt + " dias corridos à data.");
