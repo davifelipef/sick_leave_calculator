@@ -12,11 +12,9 @@ h2 {
     font-size:1.1em;
 }
 #idate {
-    width:26vw;
     text-align:center;
 }
 #inumber {
-    width:12vw;
     text-align:center;
 }
 #isubmit {
@@ -28,5 +26,5 @@ p {
     font-size: 1.3em;
     color: orange;
     text-align: center;
-    line-height:5vh;
+    line-height:4vh;
 }
