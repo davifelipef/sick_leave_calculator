@@ -1,3 +1,8 @@
+@media screen and (max-width: 768px) {
+    body {
+        width: 100%;
+    }
+}
 body {
     min-height: 100vh;
     background:linear-gradient(25deg, #4B4E53, #000000);
@@ -6,10 +11,10 @@ body {
     text-align:center;
 }
 h1 {
-    font-size:1.5em;
+    font-size:2.5em;
 }
 h2 {
-    font-size:1.1em;
+    font-size:2.1em;
 }
 #idate {
     text-align:center;
@@ -19,11 +24,11 @@ h2 {
 }
 #isubmit {
     height: 4.5vh;
-    width: 30vw;
+    width: fit-content;
     text-align:center;
 }
 p {
-    font-size: 1.3em;
+    font-size: 2.3em;
     color: orange;
     text-align: center;
     line-height:4vh;
