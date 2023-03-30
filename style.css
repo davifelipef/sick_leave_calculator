@@ -2,7 +2,7 @@
 @media only screen and (min-width:320px) {
     body {
         min-height: 95vh;
-        background:linear-gradient(25deg, #4B4E53, #000000);
+        background:linear-gradient(25deg,#2B0A93, #22276E);
         padding-top: 3%;
         padding-left: 8%;
         padding-right: 8%;
@@ -201,37 +201,41 @@
     }
 }
 
-/* Config for large devices and wide screens*/
+/* Config for large devices and wide screens - My PC included*/
 @media screen and (min-width:1366px) {
     body {
-        min-height: 100vh;
+        min-height: 93vh;
         background:linear-gradient(25deg, #4B4E53, #000000);
+        padding-top: 2%;
         background-repeat: no-repeat;
         color: #ebeded;
         text-align:center;
     }
     h1 {
-        font-size:2.5em;
+        font-size:2em;
     }
     h2 {
-        font-size:2.1em;
+        font-size:1.3em;
     }
     #idate {
+        font-size: 1.3em;
         text-align:center;
     }
     #inumber {
+        font-size: 1.2em;
         text-align:center;
+        width: 6vw;
     }
     #isubmit {
-        font-size: 1.2em;
-        height: 4.5vh;
-        width: 20vw;
+        font-size: 1em;
+        height: 5vh;
+        width: 12vw;
         text-align:center;
     }
     p {
-        font-size: 2.3em;
+        font-size: 1.4em;
         color: orange;
         text-align: center;
-        line-height:4vh;
+        line-height:8vh;
     }
 }
