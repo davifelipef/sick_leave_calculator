@@ -1,241 +1,254 @@
-/* Config for small screens - DONE*/
-@media only screen and (min-width:320px) {
+/* 1. Global settings */
+
+:root {
+    color-scheme: dark;
+
+    --color-background: #0b1220;
+    --color-surface: #151f32;
+    --color-surface-hover: #1c2940;
+
+    --color-primary: #528bff;
+    --color-primary-hover: #76a2ff;
+
+    --color-text: #f1f5f9;
+    --color-text-muted: #a4b2c7;
+
+    --color-border: #34425a;
+    --color-result: #7dd3fc;
+
+    --radius-card: 18px;
+    --radius-input: 10px;
+
+    --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 48px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            ellipse at top,
+            #1b3153 0%,
+            var(--color-background) 65%
+        );
+
+    color: var(--color-text);
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* 2. Headings */
+
+h1 {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 0 12px;
+
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 750;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+}
+
+h2 {
+    margin: 0 0 12px;
+
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+
+    color: var(--color-text-muted);
+}
+
+/* 3. Form container */
+
+form {
+    width: 100%;
+    max-width: 520px;
+    margin: 24px 0 0;
+    padding: 36px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+
+    box-shadow: var(--shadow-card);
+}
+
+/* 4. Form sections */
+
+form h2 {
+    margin-top: 8px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+/* 5. Input fields */
+
+#idate,
+#inumber {
+    width: 100%;
+    min-height: 50px;
+    padding: 12px 14px;
+
+    background: #0e1727;
+    color: var(--color-text);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+#idate {
+    text-align: center;
+}
+
+#inumber {
+    text-align: left;
+}
+
+/* Input focus */
+
+#idate:focus,
+#inumber:focus {
+    outline: none;
+    border-color: var(--color-primary);
+
+    box-shadow: 0 0 0 3px rgba(82, 139, 255, 0.2);
+
+    background: var(--color-surface-hover);
+}
+
+/* 6. Submit button */
+
+#isubmit {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 8px;
+    padding: 12px 20px;
+
+    background: var(--color-primary);
+    color: #ffffff;
+
+    border: none;
+    border-radius: var(--radius-input);
+
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#isubmit:hover {
+    background: var(--color-primary-hover);
+    box-shadow: 0 6px 20px rgba(82, 139, 255, 0.2);
+}
+
+#isubmit:active {
+    transform: translateY(1px);
+}
+
+#isubmit:focus-visible {
+    outline: 3px solid var(--color-primary-hover);
+    outline-offset: 3px;
+}
+
+/* 7. Calculation result */
+
+#result {
+    margin: 12px 0 0;
+    padding: 0;
+
+    color: var(--color-result);
+
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.9;
+
+    overflow-wrap: anywhere;
+}
+
+/* 8. Utility class */
+
+.brnodisplay {
+    display: none;
+}
+
+/* 9. Mobile devices */
+
+@media screen and (max-width: 480px) {
     body {
-        min-height: 95vh;
-        background:linear-gradient(25deg,#2B0A93, #22276E);
-        padding-top: 3%;
-        padding-left: 8%;
-        padding-right: 8%;
-        background-repeat: no-repeat;
-        color: #ebeded;
-        text-align:center;
+        padding: 32px 16px;
     }
+
     h1 {
-        font-size:2em;
+        font-size: 1.75rem;
     }
+
+    form {
+        padding: 24px 20px;
+        gap: 14px;
+    }
+
     h2 {
-        font-size:1.7em;
+        font-size: 0.95rem;
     }
-    #idate {
-        text-align:center;
-        font-size:1.4em;
-    }
-    #inumber {
-        text-align:right;
-        font-size:1em;
-        width: 20vw
-    }
-    #isubmit {
-        font-size: 1.3em;
-        height: 5.5vh;
-        width: 40vw;
-        text-align:center;
-    }
-    p {
-        font-size: 2.3em;
-        color: orange;
-        text-align: center;
-        line-height:8vh;
-    }
-    .brnodisplay {
-        display: none;
+
+    #result {
+        font-size: 1rem;
     }
 }
 
-/* Config for small devices and most mobile phones*/
-@media screen and (min-width:480px) {
-    body {
-        min-height: 94vh;
-        background:linear-gradient(25deg, #4B4E53, #000000);
-        padding-top: 3%;
-        padding-left: 8%;
-        padding-right: 8%;
-        background-repeat: no-repeat;
-        color: #ebeded;
-        text-align:center;
-    }
-    h1 {
-        font-size:2em;
-    }
-    h2 {
-        font-size:1.5em;
-    }
-    #idate {
-        text-align:center;
-        font-size:1.3em;
-    }
-    #inumber {
-        text-align:right;
-        font-size:1.3em;
-        width: 20vw
-    }
-    #isubmit {
-        font-size: 1.2em;
-        height: 5.5vh;
-        width: 30vw;
-        text-align:center;
-    }
-    p {
-        font-size: 1.6em;
-        color: orange;
-        text-align: center;
-        line-height:6vh;
-    }
-    .brnodisplay {
-        display: none;
-    }
-}
+/* 10. Reduced motion accessibility */
 
-/* Config for tablets*/
-@media screen and (min-width:768px) {
-    body {
-        min-height: 93vh;
-        background:linear-gradient(25deg, #4B4E53, #000000);
-        padding-top: 3%;
-        padding-left: 8%;
-        padding-right: 8%;
-        background-repeat: no-repeat;
-        color: #ebeded;
-        text-align:center;
-    }
-    h1 {
-        font-size:2em;
-    }
-    h2 {
-        font-size:1.5em;
-    }
-    #idate {
-        text-align:center;
-        font-size:1.3em;
-    }
-    #inumber {
-        text-align:right;
-        font-size:1.3em;
-        width: 20vw
-    }
-    #isubmit {
-        font-size: 1.2em;
-        height: 5.5vh;
-        width: 30vw;
-        text-align:center;
-    }
-    p {
-        font-size: 1.6em;
-        color: orange;
-        text-align: center;
-        line-height:6vh;
-    }
-    .brnodisplay {
-        display: none;
-    }
-}
-
-/* Config for small desktops*/
-@media screen and (min-width:992px) {
-    body {
-        min-height: 92vh;
-        background:linear-gradient(25deg, #4B4E53, #000000);
-        background-repeat: no-repeat;
-        color: #ebeded;
-        text-align:center;
-    }
-    h1 {
-        font-size:2.5em;
-    }
-    h2 {
-        font-size:1.6em;
-    }
-    #idate {
-        text-align:center;
-    }
-    #inumber {
-        text-align:right;
-        width: 10vw;
-    }
-    #isubmit {
-        font-size: 1.2em;
-        height: 4.5vh;
-        width: 20vw;
-        text-align:center;
-    }
-    p {
-        font-size:1.6em;
-        color: orange;
-        text-align: center;
-        line-height:4vh;
-    }
-}
-
-/* Config for large devices and wide screens*/
-@media screen and (min-width:1200px) {
-    body {
-        min-height: 100vh;
-        background:linear-gradient(25deg, #4B4E53, #000000);
-        background-repeat: no-repeat;
-        color: #ebeded;
-        text-align:center;
-    }
-    h1 {
-        font-size:2.5em;
-    }
-    h2 {
-        font-size:2.1em;
-    }
-    #idate {
-        text-align:center;
-    }
-    #inumber {
-        text-align:center;
-    }
-    #isubmit {
-        font-size: 1.2em;
-        height: 4.5vh;
-        width: 20vw;
-        text-align:center;
-    }
-    p {
-        font-size: 2.3em;
-        color: orange;
-        text-align: center;
-        line-height:4vh;
-    }
-}
-
-/* Config for large devices and wide screens - My PC included*/
-@media screen and (min-width:1366px) {
-    body {
-        min-height: 93vh;
-        background:linear-gradient(25deg, #4B4E53, #000000);
-        padding-top: 2%;
-        background-repeat: no-repeat;
-        color: #ebeded;
-        text-align:center;
-    }
-    h1 {
-        font-size:2em;
-    }
-    h2 {
-        font-size:1.3em;
-    }
-    #idate {
-        font-size: 1.3em;
-        text-align:center;
-    }
-    #inumber {
-        font-size: 1.2em;
-        text-align:center;
-        width: 6vw;
-    }
-    #isubmit {
-        font-size: 1em;
-        height: 5vh;
-        width: 12vw;
-        text-align:center;
-    }
-    p {
-        font-size: 1.4em;
-        color: orange;
-        text-align: center;
-        line-height:8vh;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }

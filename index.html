@@ -7,7 +7,7 @@
         <title>Sick Leave Calculator</title>
     </head>
         <body>
-            <h1>Calculadora de Licença Saúde 1.0</h1>
+            <h1>Calculadora de Afastamentos</h1>
             <br>
                 <form id="calculator" action="">
                     <h2>Selecione a data de início da licença:</h2>         
@@ -17,7 +17,7 @@
                         <input type="number" id="inumber" min="1" onchange="numberCheck()" required/>
                     <br>
                     <h2>Clique no botão abaixo para fazer o cálculo:</h2>
-                        <input type="submit" id="isubmit" value="Calcular data" onclick="calcDate()"/>
+                        <input type="submit" id="isubmit" value="Calcular data" onclick="calcDate(event)"/>
                     <p id="result"></p>
                 </form>
         </body>

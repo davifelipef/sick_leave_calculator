@@ -1,98 +1,95 @@
-//give week days its names
-const weekdays = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+// Give weekdays their names
+const weekdays = [
+    "domingo",
+    "segunda-feira",
+    "terça-feira",
+    "quarta-feira",
+    "quinta-feira",
+    "sexta-feira",
+    "sábado"
+];
 
 function dateCheck() {
     var userDate = document.getElementById("idate").value;
-    /*manually parsing the date once
-it is selected*/
+
+    // Parse the selected date
     var dateArr = userDate.split("-");
-    var year = dateArr[0];
+    var year = parseInt(dateArr[0], 10);
     var month = parseInt(dateArr[1], 10) - 1;
-    var day = dateArr[2];
-    //initializing the date
+    var day = parseInt(dateArr[2], 10);
+
+    // Initialize the date
     var datDate = new Date(year, month, day);
-    //console.log(date);
-    var daynumber = String(datDate.getDate()).padStart(2, '0'); 
-//gets the week day name
-    var day = weekdays[datDate.getDay()];
-    //gets the month
-    var month = String(datDate.getMonth()   +1).padStart(2, '0');
-    //gets the year
-    var year = datDate.getFullYear(); 
-    //group day, month and year for the console output
-    var currentdate = daynumber + '/' + month + '/' + year; 
+
     return datDate;
 }
 
 function numberCheck() {
     var userNumber = document.getElementById("inumber").value;
-    /*gets the string above and parses into 
-number*/
-    var addDays = parseInt(userNumber);
+
+    // Convert the input to a number
+    var addDays = parseInt(userNumber, 10);
+
     return addDays;
 }
 
-function calcDate() {
+function calcDate(event) {
     event.preventDefault();
+
     var x = dateCheck();
     var y = numberCheck();
-    //gets the initial date
-    var initdaynumber =    String(x.getDate()).padStart(2, '0');
-    //gets the initial week day name
+
+    // Get the initial date components
+    var initdaynumber = String(x.getDate()).padStart(2, '0');
     var initday = weekdays[x.getDay()];
-    //gets the month of the initial date
-    var initmonth = String(x.getMonth() +1).padStart(2, '0');
-    //gets the year of the initial date
-    var inityear = x.getFullYear(); 
-    //group initial day, month and year
+    var initmonth = String(x.getMonth() + 1).padStart(2, '0');
+    var inityear = x.getFullYear();
+
+    // Format the initial date
     var initdategp = initdaynumber + '/' + initmonth + '/' + inityear;
-    //beginning of the day's calculation
-    const sumDay = 1;
-    var countDays = 0;
-    //this array stores every week day
-    var accountedDays = [];
-    //the loop that checks the day of the week
-    while (countDays < y) {
-    countDays += 1;
-    x.setDate(x.getDate() + sumDay);
-    var wknDay = weekdays[x.getDay()];
-    accountedDays.push(wknDay);
-    //decreases one day if it's saturday
-    /*if (wknDay == "sábado") {
-        countDays--;
-    }
-    //decreases one day if it's sunday
-    if (wknDay == "domingo"){
-        countDays--;
-    }*/
-    /*logs used during development
-    console.log(countDays);
-    console.log(accountedDays);
-    console.log(countDays + ", " + wknDay);*/
-}
-    //gets the total of the days
-    var finalDate = accountedDays.length-1;
-    //parses the total of the days to number
-    var finalDateInt = parseInt(finalDate);
-    //resets the date back to the user inputs
-    x = dateCheck();
-    /*adds the days specified by the user to 
-the date*/
-    x.setDate(x.getDate() + finalDateInt);
-    //gets the number of the future date
-    var ftdaynumber =    String(x.getDate()).padStart(2, '0');
-    //gets the future week day name
+
+    // Calculate the final date of the leave
+    x.setDate(x.getDate() + y);
+
+    // Get the final date components
+    var ftdaynumber = String(x.getDate()).padStart(2, '0');
     var ftday = weekdays[x.getDay()];
-    //gets the month of the future date
-    var ftmonth = String(x.getMonth() +1).padStart(2, '0');
-    //gets the year of the future date
-    var ftyear = x.getFullYear(); 
-    //group future day, month and year
+    var ftmonth = String(x.getMonth() + 1).padStart(2, '0');
+    var ftyear = x.getFullYear();
+
+    // Format the final date
     var ftdategp = ftdaynumber + '/' + ftmonth + '/' + ftyear;
-    //TODO displays the result
-    document.getElementById("result").innerHTML = "A licença de " + y + " dia(s) a partir de " + initday + ", " + initdategp + ",<br/>\nterminará no dia " + ftdategp + " ("+ftday+").";
-    //logs used during development
-    /*console.log("Os dias selecionados para adição à data foram: "+ y);
-    console.log("Foram adicionados "+ finalDateInt + " dias corridos à data.");
-    console.log("Foram adicionados "+y+ " dias úteis à data. A data futura é "+ftday+", "+ftdategp+ ".");*/
+
+    // Calculate the return-to-work date
+    var returnDate = new Date(x);
+
+    // If the leave ends on Friday, Saturday, or Sunday,
+    // the employee returns on Monday
+    if (returnDate.getDay() === 5) {
+        returnDate.setDate(returnDate.getDate() + 3);
+    } else if (returnDate.getDay() === 6) {
+        returnDate.setDate(returnDate.getDate() + 2);
+    } else if (returnDate.getDay() === 0) {
+        returnDate.setDate(returnDate.getDate() + 1);
+    } else {
+        returnDate.setDate(returnDate.getDate() + 1);
+    }
+
+    // Get the return date components
+    var retdays = String(returnDate.getDate()).padStart(2, '0');
+    var retmonth = String(returnDate.getMonth() + 1).padStart(2, '0');
+    var retyear = returnDate.getFullYear();
+    var retweekday = weekdays[returnDate.getDay()];
+
+    // Format the return date
+    var returnDateFormatted = retdays + '/' + retmonth + '/' + retyear;
+
+    // Display the results
+    document.getElementById("result").innerHTML =
+        "A licença de " + y + " dia(s) a partir de " +
+        initday + ", " + initdategp +
+        ",<br/>terminará no dia " + ftdategp +
+        " (" + ftday + ")." +
+        "<br/>Retorno ao trabalho: " +
+        returnDateFormatted + " (" + retweekday + ").";
 }
